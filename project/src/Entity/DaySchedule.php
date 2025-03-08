@@ -31,8 +31,8 @@ class DaySchedule
     #[ORM\Column(length: 255)]
     private ?string $teacher = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $date = null;
+    #[ORM\Column(type: 'date')]
+    private ?\DateTimeInterface $date = null;
 
     public function getId(): ?int
     {
@@ -99,12 +99,12 @@ class DaySchedule
         return $this;
     }
 
-    public function getDate(): ?\DateTimeImmutable
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(\DateTimeImmutable $date): static
+    public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
 

@@ -1,3 +1,37 @@
-body {
-    background-color: skyblue;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+#finalView{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    .firstContainer{
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        background-color: aqua;
+        padding: 20px;
+        align-items: center;
+        .firstContainer__image{
+            max-width: 150px;
+            height: auto;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover   ;
+            }
+        }
+        h1{
+            font-size: 50px;
+            font-family: "Montserrat";
+            flex: 2;
+            text-align: center;
+        }
+    }
 }
