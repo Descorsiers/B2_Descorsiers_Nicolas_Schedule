@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DaySchedule index{% endblock %}
+
+{% block body %}
+    <h1>DaySchedule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Schedule</th>
+                <th>Grade</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for day_schedule in day_schedules %}
+            <tr>
+                <td>{{ day_schedule.id }}</td>
+                <td>{{ day_schedule.name }}</td>
+                <td>{{ day_schedule.schedule }}</td>
+                <td>{{ day_schedule.grade }}</td>
+                <td>{{ day_schedule.subject }}</td>
+                <td>{{ day_schedule.teacher }}</td>
+                <td>{{ day_schedule.date ? day_schedule.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_day_schedule_show', {'id': day_schedule.id}) }}">show</a>
+                    <a href="{{ path('app_day_schedule_edit', {'id': day_schedule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_day_schedule_new') }}">Create new</a>
+{% endblock %}

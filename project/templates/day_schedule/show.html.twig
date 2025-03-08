@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DaySchedule{% endblock %}
+
+{% block body %}
+    <h1>DaySchedule</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ day_schedule.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ day_schedule.name }}</td>
+            </tr>
+            <tr>
+                <th>Schedule</th>
+                <td>{{ day_schedule.schedule }}</td>
+            </tr>
+            <tr>
+                <th>Grade</th>
+                <td>{{ day_schedule.grade }}</td>
+            </tr>
+            <tr>
+                <th>Subject</th>
+                <td>{{ day_schedule.subject }}</td>
+            </tr>
+            <tr>
+                <th>Teacher</th>
+                <td>{{ day_schedule.teacher }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ day_schedule.date ? day_schedule.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_day_schedule_index') }}">back to list</a>
+
+    <a href="{{ path('app_day_schedule_edit', {'id': day_schedule.id}) }}">edit</a>
+
+    {{ include('day_schedule/_delete_form.html.twig') }}
+{% endblock %}

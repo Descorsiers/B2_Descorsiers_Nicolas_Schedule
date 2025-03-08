@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DaySchedule{% endblock %}
+
+{% block body %}
+    <h1>Edit DaySchedule</h1>
+
+    {{ include('day_schedule/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_day_schedule_index') }}">back to list</a>
+
+    {{ include('day_schedule/_delete_form.html.twig') }}
+{% endblock %}

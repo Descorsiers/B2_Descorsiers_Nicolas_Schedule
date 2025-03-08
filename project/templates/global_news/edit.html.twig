@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit GlobalNews{% endblock %}
+
+{% block body %}
+    <h1>Edit GlobalNews</h1>
+
+    {{ include('global_news/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_global_news_index') }}">back to list</a>
+
+    {{ include('global_news/_delete_form.html.twig') }}
+{% endblock %}

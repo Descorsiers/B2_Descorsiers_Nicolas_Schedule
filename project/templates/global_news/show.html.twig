@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GlobalNews{% endblock %}
+
+{% block body %}
+    <h1>GlobalNews</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ global_news.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ global_news.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ global_news.description }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ global_news.imageName }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ global_news.updatedAt ? global_news.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_global_news_index') }}">back to list</a>
+
+    <a href="{{ path('app_global_news_edit', {'id': global_news.id}) }}">edit</a>
+
+    {{ include('global_news/_delete_form.html.twig') }}
+{% endblock %}
