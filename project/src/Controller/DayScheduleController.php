@@ -18,7 +18,7 @@ final class DayScheduleController extends AbstractController
     public function index(DayScheduleRepository $dayScheduleRepository): Response
     {
         return $this->render('day_schedule/index.html.twig', [
-            'day_schedules' => $dayScheduleRepository->findAll(),
+            'day_schedules' => $dayScheduleRepository->findAll(), 
         ]);
     }
 

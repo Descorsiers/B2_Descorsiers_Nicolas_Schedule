@@ -4,7 +4,6 @@
 
 {% block body %}
     <h1>DaySchedule index</h1>
-
     <table class="table">
         <thead>
             <tr>
@@ -22,9 +21,9 @@
         {% for day_schedule in day_schedules %}
             <tr>
                 <td>{{ day_schedule.id }}</td>
-                <td>{{ day_schedule.name }}</td>
-                <td>{{ day_schedule.schedule }}</td>
-                <td>{{ day_schedule.grade }}</td>
+                <td>{{ day_schedule.name.name }}</td>
+                <td>{{ day_schedule.schedule.name }}</td>
+                <td>{{ day_schedule.grade.name }}</td>
                 <td>{{ day_schedule.subject }}</td>
                 <td>{{ day_schedule.teacher }}</td>
                 <td>{{ day_schedule.date ? day_schedule.date|date('Y-m-d H:i:s') : '' }}</td>
