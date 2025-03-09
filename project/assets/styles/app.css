@@ -34,4 +34,153 @@
             text-align: center;
         }
     }
+    .secondContainer{
+        padding: 20px;
+        h2{
+            font-size: 25px;
+            font-family: "Montserrat";
+            text-align: center;
+        }
+    }
+    .thirdContainer{
+        display: flex;
+        .content{
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            >p{
+                height: 40px;
+            }
+            .content__container{
+                border: solid 1px black;
+                display: flex;
+                .defSchedule{
+                    display: flex;
+                    h3{
+                        padding: 20px 10px;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
+                        color: rgb(0, 89, 255);
+                        font-family: "Montserrat";
+                    }
+                    .today{
+                        display: flex;
+                        flex-direction: column;
+                        .todayDate{
+                            flex: 1;
+                            background-color: aqua;
+                            padding: 5px 0;
+                            color: black;
+                            font-family: "Poppins";
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 18px;
+                        }
+                        .staticInformations{
+                            flex: 2;
+                            background-color: rgb(60, 160, 253);
+                            color: white;
+                            font-family: "Poppins";
+                            padding: 0 5px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            font-size: 18px;
+                        }
+                    }
+                }
+                .subjectTeacher{
+                    display: flex;
+                    width: 100%;
+                    .morning{
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        .morningTime{
+                            flex: 1;
+                            padding: 5px 0;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: rgb(0, 22, 122);
+                            p{
+                                color: white;
+                                font-size: 18   px;
+                                font-weight: 700;
+                                text-align: center;
+                                font-family: "Poppins";
+                            }
+                        }
+                        .morningText{
+                            background-color: rgb(0, 195, 255);
+                            flex: 2;
+                            display: flex;
+                            flex-direction: column;
+                            .morningText__teacher, .morningText__subject{
+                                flex: 1;
+                                text-align: center;
+                                font-size: 18px;
+                                font-family: "Poppins";
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                    .afternoon{
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        .afternoonTime{
+                            flex: 1;
+                            padding: 5px 0;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: rgb(0, 22, 122);
+                            p{
+                                color: white;
+                                font-size: 18   px;
+                                font-weight: 700;
+                                text-align: center;
+                                font-family: "Poppins";
+                            }
+                        }
+                        .afternoonText{
+                            background-color: rgb(0, 195, 255);
+                            flex: 2;
+                            display: flex;
+                            flex-direction: column;
+                            .afternoonText__teacher, .afternoonText__subject{
+                                flex: 1;
+                                text-align: center;
+                                font-size: 18px;
+                                font-family: "Poppins";
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .emptyContent{
+            display: flex;
+            flex-direction: column;
+            width: 15%;
+            p{
+                font-family: "Poppins";
+                font-size: 25px;
+                height: 40px;
+                text-align: center;
+            }
+            div{
+                border-right: 1px solid black;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+                background-color: rgb(155, 253, 168);
+                height: 100%;
+            }
+        }
+    }
 }
