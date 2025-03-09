@@ -3,129 +3,91 @@
 {% block title %}Hello FinalViewController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-{# <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/src/Controller/FinalViewController.php</code></li>
-        <li>Your template at <code>/var/www/templates/final_view/index.html.twig</code></li>
-        <li>{{ todaySchedule }}</li>
-        <li>{{ date }}</li>
-        <li>{{ tomorrowSchedule }}</li>
-        <li>{{ today.name.name|slice(0,3) }}</li>
-        <li>{{ tomorrow.name.name }}</li>
-        {% if date == todaySchedule %}
-            <p>
-                test
-            <p/>
-        {% endif %}
-        
-    </ul>
-</div> #}
 <section id="finalView">
-    {% for schedule in todaySchedule %}
-        {% if schedule.grade.name == 'B1' %}
-            {% if schedule.schedule.name == 'Matin' or schedule.schedule.name == 'Journée' %}
-                <div class="firstContainer">
-                    <figure class="firstContainer__image">
-                        <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
-                    </figure>
-                    <h1>
-                        {{schedule.grade.name}} Tronc commun
-                    </h1>
-                </div>
-            {% endif %}
-            <div class="secondContainer">
-                <h2>
-                    Planning du 
-                </h2>
-            </div>
-            <div class="thirdContainer">
-                {% if schedule.schedule.name == 'Matin' or schedule.schedule.name == 'Journée' %}
-                
-                {% endif %}
-            
-                <div class="content">
-                    <p></p>
-                    <div class="content__container">
-                        <div class="">
-                            <h3>
-                                {{ schedule.name.name|slice(0,3)|upper() }}
-                            </h3>
-                            <div>
-                                <p>
-                                    {{ schedule.date|date('d-M') }}
-                                </p>
-                                <p>
-                                    Enseignant
-                                    <br>Matière
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                        
+    <div class="b1">
+        <div class="firstContainer">
+            <figure class="firstContainer__image">
+                <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}" />
+            </figure>
+            <h1>
+                {{ B1[0].grade.name }} Tronc commun
+            </h1>
+        </div>
+        <div class="secondContainer">
+            <h2>
+                Planning du {{ week.first }} au {{ week.last }}
+            </h2>
+        </div>
+        <div class="thirdContainer">
+            <div class="content">
+                <p></p>
+                <div class="content__container">
+                    <div class="defSchedule">
+                        <h3>
+                            {{ B1[0].name.name|slice(0,3) }}
+                        </h3>
+                        <div class="today">
+                            <p class="todayDate">
+                                {{ B1[0].date|date('d-M') }}
+                            </p>
+                            <p class="staticInformations">
+                                Enseignant
+                                <br>Matière
+                            </p>
                         </div>
                     </div>
+                    <div class="subjectTeacher">
+                        {% if B1|length  == 1 %}
+                            {# Class all the day #}
+                            {% if B1[0].schedule.name == 'Journée' %}
+                                {% include "final_view/b1/classAllDay.html.twig" with {'B1': B1 } %}
+                                {# Class just the morning #}
+                            {% elseif B1[0].schedule.name == 'Matin' %}
+                                {% include "final_view/b1/classJustMorning.html.twig" with {'B1': B1 } %}
+                                {# Class just afternoon #}
+                            {% elseif B1[0].schedule.name == 'Après_midi' %}
+                                {% include "final_view/b1/classJustAfternoon.html.twig" with {'B1': B1 } %}
+                            {% endif %}
+                        {% elseif B1|length  == 2 %}
+                            {% include "final_view/b1/morningAfternoon.html.twig" with {'B1': B1 } %}
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="emptyContent">
-                    <p>
-                        Notes
-                    </p>
-                    <div>
+            </div>
+            <div class="emptyContent">
+                <p>
+                    Notes
+                </p>
+                <div>
                     
-                    </div>
                 </div>
             </div>
-        {% elseif schedule.grade.name == "B2Dev" %}
-            {% if schedule.schedule.name == 'Matin' or schedule.schedule.name == 'Journée' %}
-                <div class="firstContainer">
-                    <figure class="firstContainer__image">
-                        <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
-                    </figure>
-                    <h1>
-                        {{schedule.grade.name}} Développement Web & Data
-                    </h1>
-                </div>
-            {% endif %}
-            <div></div>
-            <div></div>
-        {% elseif schedule.grade.name == "B2Design" %}
-            {% if schedule.schedule.name == 'Matin' or schedule.schedule.name == 'Journée' %}
-                <div class="firstContainer">
-                    <figure class="firstContainer__image">
-                        <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
-                    </figure>
-                    <h1>
-                        {{schedule.grade.name}} Web Design & Marketing
-                    </h1>
-                </div>
-            {% endif %}
-            <div></div>
-            <div></div>    
-        {% else %}
-            {% if schedule.schedule.name == 'Matin' or schedule.schedule.name == 'Journée' %}
-                <div class="firstContainer">
-                    <figure class="firstContainer__image">
-                        <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
-                    </figure>
-                    <h1>
-                        {{schedule.grade.name}} Dev
-                    </h1>
-                </div>
-            {% endif %}
-            <div></div>
-            <div></div>
-        {% endif %}
+        </div>
+    </div>
+    {# <div class="b2">
+        <div>
+            <figure>
+                <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}" />
+            </figure>
+            <h1>
             
-        
-    {% endfor %}
+            </h1>
+        </div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="b3">
+        <div>
+            <figure>
+                <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}" />
+            </figure>
+            <h1>
+            
+            </h1>
+        </div>
+        <div></div>
+        <div></div>
+    </div> #}
 </section>
-
-
 {% endblock %}
