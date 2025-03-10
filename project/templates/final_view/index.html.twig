@@ -1,93 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FinalViewController!{% endblock %}
+{% block title %}Hello FinalViewController!
+{% endblock %}
 
 {% block body %}
 
-<section id="finalView">
-    <div class="b1">
-        <div class="firstContainer">
-            <figure class="firstContainer__image">
-                <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}" />
-            </figure>
-            <h1>
-                {{ B1[0].grade.name }} Tronc commun
-            </h1>
-        </div>
-        <div class="secondContainer">
-            <h2>
-                Planning du {{ week.first }} au {{ week.last }}
-            </h2>
-        </div>
-        <div class="thirdContainer">
-            <div class="content">
-                <p></p>
-                <div class="content__container">
-                    <div class="defSchedule">
-                        <h3>
-                            {{ B1[0].name.name|slice(0,3) }}
-                        </h3>
-                        <div class="today">
-                            <p class="todayDate">
-                                {{ B1[0].date|date('d-M') }}
-                            </p>
-                            <p class="staticInformations">
-                                Enseignant
-                                <br>Matière
-                            </p>
-                        </div>
-                    </div>
-                    <div class="subjectTeacher">
-                        {% if B1|length  == 1 %}
-                            {# Class all the day #}
-                            {% if B1[0].schedule.name == 'Journée' %}
-                                {% include "final_view/b1/classAllDay.html.twig" with {'B1': B1 } %}
-                                {# Class just the morning #}
-                            {% elseif B1[0].schedule.name == 'Matin' %}
-                                {% include "final_view/b1/classJustMorning.html.twig" with {'B1': B1 } %}
-                                {# Class just afternoon #}
-                            {% elseif B1[0].schedule.name == 'Après_midi' %}
-                                {% include "final_view/b1/classJustAfternoon.html.twig" with {'B1': B1 } %}
-                            {% endif %}
-                        {% elseif B1|length  == 2 %}
-                            {% include "final_view/b1/morningAfternoon.html.twig" with {'B1': B1 } %}
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            <div class="emptyContent">
-                <p>
-                    Notes
-                </p>
-                <div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    {# <div class="b2">
-        <div>
-            <figure>
-                <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}" />
-            </figure>
-            <h1>
-            
-            </h1>
-        </div>
-        <div></div>
-        <div></div>
-    </div>
-    <div class="b3">
-        <div>
-            <figure>
-                <img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}" />
-            </figure>
-            <h1>
-            
-            </h1>
-        </div>
-        <div></div>
-        <div></div>
-    </div> #}
-</section>
+	<section id="finalView">
+		<div class="todaySchedule">
+			{% include "final_view/b1/index.html.twig"  %}
+			{% include "final_view/b2/index.html.twig"  %}
+			{% include "final_view/b3/index.html.twig"  %}
+		</div>
+	</section>
 {% endblock %}

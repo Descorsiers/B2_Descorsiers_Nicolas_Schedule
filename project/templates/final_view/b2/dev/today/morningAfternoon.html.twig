@@ -1,0 +1,30 @@
+<div class="morning">
+	<div class="morningTime">
+		<p>
+			09:00 - 12:00
+		</p>
+	</div>
+	<div class="morningText">
+		<p class="morningText__teacher">{{ B2['dev'][0].schedule.name == 'Matin' ? B2['dev'][0].teacher : B2['dev'][1].teacher }}
+		</p>
+		<p></p>
+		<p class="morningText__subject">{{ B2['dev'][0].schedule.name == 'Matin' ? B2['dev'][0].subject : B2['dev'][1].subject }}
+		</p>
+		<p></p>
+	</div>
+</div>
+<div class="afternoon">
+	<div class="afternoonTime">
+		<p>
+			13:00 - 16:00
+		</p>
+	</div>
+	<div class="afternoonText">
+		<p class="afternoonText__teacher">{{ B2['dev'][0].schedule.name == 'Après_midi' ? B2['dev'][0].teacher : B2['dev'][1].teacher }}
+		</p>
+		<p></p>
+		<p class="afternoonText__subject">{{ B2['dev'][0].schedule.name == 'Après_midi' ? B2['dev'][0].subject : B2['dev'][1].subject }}
+		</p>
+		<p></p>
+	</div>
+</div>

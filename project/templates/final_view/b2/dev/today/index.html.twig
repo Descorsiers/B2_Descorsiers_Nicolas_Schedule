@@ -1,0 +1,59 @@
+<div class="dev">
+	<div class="firstContainer">
+		<figure class="firstContainer__image">
+			<img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
+		</figure>
+		<h1>
+			{{ B2['dev'][0].grade.name|slice(0,2) }}
+			Développement Web & Data
+		</h1>
+	</div>
+	<div class="secondContainer">
+		<h2>
+			Planning du
+			{{ week.first }}
+			au
+			{{ week.last }}
+		</h2>
+	</div>
+	<div class="thirdContainer">
+		<div class="content">
+			<p></p>
+			<div class="content__container">
+				<div class="defSchedule">
+					<h3>
+						{{ B2['dev'][0].name.name|slice(0,3) }}
+					</h3>
+					<div class="today">
+						<p class="todayDate">
+							{{ B2['dev'][0].date|date("d-M") }}
+						</p>
+						<p class="staticInformations">
+							Enseignant
+							<br>Matière
+						</p>
+					</div>
+				</div>
+				<div class="subjectTeacher">
+					{% if B2['dev']|length == 1 %}
+						{% if B2['dev'][0].schedule.name == 'Journée' %}
+							{% include "final_view/b2/dev/today/classAllDay.html.twig" with {'B2' : B2} %}
+						{% elseif B2['dev'][0].schedule.name == 'Matin' %}
+							{% include "final_view/b2/dev/today/classJustMorning.html.twig" with {'B2' : B2} %}
+						{% elseif B2['dev'][0].schedule.name == 'Après_midi' %}
+							{% include "final_view/b2/dev/today/classJustAfternoon.html.twig" with {'B2' : B2} %}
+						{% endif %}
+					{% elseif B2['dev']|length == 2 %}
+						{% include "final_view/b2/dev/today/morningAfternoon.html.twig" with {'B2' : B2} %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="emptyContent">
+			<p>
+				Notes
+			</p>
+			<div></div>
+		</div>
+	</div>
+</div>
