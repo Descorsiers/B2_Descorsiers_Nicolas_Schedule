@@ -9,8 +9,10 @@
 }
 #finalView{
     display: flex;
-    flex-direction: column;
     padding: 20px;
+    .b1Content, .b2Content, .b3Content{
+        display: flex;
+    }
     .firstContainer{
         display: flex;
         justify-content: space-between;
@@ -28,7 +30,7 @@
             }
         }
         h1{
-            font-size: 50px;
+            font-size: 30px;
             font-family: "Montserrat";
             flex: 2;
             text-align: center;

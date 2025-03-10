@@ -1,0 +1,59 @@
+<div class="design">
+	<div class="firstContainer">
+		<figure class="firstContainer__image">
+			<img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
+		</figure>
+		<h1>
+			{{ tomorrowB2['design'][0].grade.name|slice(0,2) }}
+			Web Design & Marketing
+		</h1>
+	</div>
+	<div class="secondContainer">
+		<h2>
+			Planning du
+			{{ week.first }}
+			au
+			{{ week.last }}
+		</h2>
+	</div>
+	<div class="thirdContainer">
+		<div class="content">
+			<p></p>
+			<div class="content__container">
+				<div class="defSchedule">
+					<h3>
+						{{ tomorrowB2['design'][0].name.name|slice(0,3) }}
+					</h3>
+					<div class="today">
+						<p class="todayDate">
+							{{ tomorrowB2['design'][0].date|date("d-M") }}
+						</p>
+						<p class="staticInformations">
+							Enseignant
+							<br>Matière
+						</p>
+					</div>
+				</div>
+				<div class="subjectTeacher">
+					{% if tomorrowB2['design']|length == 1 %}
+						{% if tomorrowB2['design'][0].schedule.name == 'Journée' %}
+							{% include "final_view/b2/design/tomorrow/classAllDay.html.twig" with {'tomorrowB2' : tomorrowB2} %}
+						{% elseif tomorrowB2['design'][0].schedule.name == 'Matin' %}
+							{% include "final_view/b2/design/tomorrow/classJustMorning.html.twig" with {'tomorrowB2' : tomorrowB2} %}
+						{% elseif tomorrowB2['design'][0].schedule.name == 'Après_midi' %}
+							{% include "final_view/b2/design/tomorrow/classJustAfternoon.html.twig" with {'tomorrowB2' : tomorrowB2} %}
+						{% endif %}
+					{% elseif tomorrowB2['design']|length == 2 %}
+						{% include "final_view/b2/design/tomorrow/morningAfternoon.html.twig" with {'tomorrowB2' : tomorrowB2} %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="emptyContent">
+			<p>
+				Notes
+			</p>
+			<div></div>
+		</div>
+	</div>
+</div>
