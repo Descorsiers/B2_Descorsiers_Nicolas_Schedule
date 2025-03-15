@@ -6,12 +6,37 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
+    box-sizing: border-box;
 }
 #finalView{
     display: flex;
-    padding: 20px;
+    padding: 15px 0 0 15px;
+    overflow: hidden;
     .b1Content, .b2Content, .b3Content{
         display: flex;
+        width: 100%;
+        gap: 20px;
+        transition: all 500ms ease-in-out 0s;
+    }
+    .b2Content{
+        gap: calc(100% + 40px);
+    }
+    .b1Today, .b1Tomorrow, .b2Today, .b2Tomorrow, .b3Today, .b3Tomorrow{
+        flex: 1 0 100%;
+    }
+    .b2Today, .b2Tomorrow{
+        display: flex;
+        gap: 20px;
+    }
+    .dev, .design{
+        flex: 1 0 100%;
+    }
+    .todaySchedule{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 50%;
+        overflow: hidden;
     }
     .firstContainer{
         display: flex;
@@ -21,7 +46,7 @@
         padding: 20px;
         align-items: center;
         .firstContainer__image{
-            max-width: 150px;
+            max-width: 125px;
             height: auto;
             img{
                 width: 100%;
@@ -30,7 +55,7 @@
             }
         }
         h1{
-            font-size: 30px;
+            font-size: 25px;
             font-family: "Montserrat";
             flex: 2;
             text-align: center;
@@ -39,7 +64,7 @@
     .secondContainer{
         padding: 20px;
         h2{
-            font-size: 25px;
+            font-size: 20px;
             font-family: "Montserrat";
             text-align: center;
         }

@@ -26,6 +26,8 @@ final class FinalViewController extends AbstractController
         $tomorrowB2 = array('dev' => $repository->findBy(['date' => $dateTomorrow, 'grade' => 'B2Dev']),'design' => $repository->findBy(['date' => $dateTomorrow, 'grade' => 'B2Design']));
         $tomorrowB3 = $repository->findBy(['date' => $dateTomorrow, 'grade' => 'B3']);
         $week =null;
+        $data = simplexml_load_file("https://www.amiens.fr/flux-rss/actus");
+        dd($data->channel);
         if ($dayB1[0]) {
             $todayName = $dayB1[0]->getName()->name;
             $week = [
@@ -64,6 +66,7 @@ final class FinalViewController extends AbstractController
             'tomorrowB2' => $tomorrowB2,
             'tomorrowB3' => $tomorrowB3,
             'week' => $week,
+            'rssItems' => $data->channel->item,
         ]);
     }
 }
