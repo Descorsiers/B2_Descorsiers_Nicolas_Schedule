@@ -39,6 +39,17 @@
         flex: 1;
         overflow: hidden;
     }
+    .notSchedule{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1, h2{
+            font-family: "Montserrat";
+            font-weight: 700;
+            font-size: 30px;
+            text-align: center;
+        }
+    }
     .firstContainer{
         display: flex;
         justify-content: space-between;
@@ -56,7 +67,7 @@
             }
         }
         h1{
-            font-size: 25px;
+            font-size: 30px;
             font-family: "Montserrat";
             flex: 2;
             text-align: center;
@@ -65,7 +76,7 @@
     .secondContainer{
         padding: 20px;
         h2{
-            font-size: 20px;
+            font-size: 25px;
             font-family: "Montserrat";
             text-align: center;
         }
@@ -216,13 +227,14 @@
         flex-direction: column;
         gap: 10px;
         flex: 1;
+        background-color: rgb(221, 221, 221);
         .newsCity{
+            border-bottom: 0.5px solid rgb(141, 141, 141);
             display: flex;
             flex-direction: column;
             gap: 20px;
             flex: 1;
             padding: 20px 0 0 0;
-            background-color: rgb(221, 221, 221);
             h2{
                 font-family: "Montserrat";
                 font-size: 25px;
@@ -276,6 +288,43 @@
         }
         .newsFun{
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 0 20px;
+            h2{
+                font-family: "Montserrat";
+                font-size: 25px;
+                text-align: center;
+                font-weight: 800;
+            }
+            .newsFunContent{
+                display: flex;
+                gap: 15px;
+                .newsFunContent__picture{
+                    width: 60%;
+                    height: auto;
+                    overflow: hidden;
+                    border-radius: 20px;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .newsFunContent__description{
+                    font-family: "Poppins";
+                    font-size: 20px;
+                    text-align: start;
+                    font-weight: 600;
+                }
+            }
+            h3{
+                font-family: "Montserrat";
+                font-size: 22px;
+                text-align: center;
+                font-weight: 700;
+            }
         }
     }
 }

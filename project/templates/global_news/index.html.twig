@@ -11,8 +11,6 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>ImageName</th>
-                <th>UpdatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,8 +20,9 @@
                 <td>{{ global_news.id }}</td>
                 <td>{{ global_news.title }}</td>
                 <td>{{ global_news.description }}</td>
-                <td>{{ global_news.imageName }}</td>
-                <td>{{ global_news.updatedAt ? global_news.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <img src="{{ asset('images/news/leavemealone-67d58474bd2e7879780624.jpg') }}" alt="">
+                </td>
                 <td>
                     <a href="{{ path('app_global_news_show', {'id': global_news.id}) }}">show</a>
                     <a href="{{ path('app_global_news_edit', {'id': global_news.id}) }}">edit</a>
