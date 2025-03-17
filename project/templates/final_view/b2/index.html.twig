@@ -1,10 +1,18 @@
 <div class="b2Content">
 	<div class="b2Today">
-        {% include "final_view/b2/dev/today/index.html.twig" %}
-        {% include "final_view/b2/design/today/index.html.twig" %}
+		{% include "final_view/b2/dev/today/index.html.twig" %}
+		{% include "final_view/b2/design/today/index.html.twig" %}
 	</div>
-	<div class="b2Tomorrow">
-        {% include "final_view/b2/dev/tomorrow/index.html.twig" %}
-        {% include "final_view/b2/design/tomorrow/index.html.twig" %}
-	</div>
+	{% if tomorrowB2 %}
+		<div class="b2Tomorrow">
+			{% include "final_view/b2/dev/tomorrow/index.html.twig" %}
+			{% include "final_view/b2/design/tomorrow/index.html.twig" %}
+		</div>
+        {% else %}
+                <div class="notSchedule">
+                        <h2>
+                                Pas de cours demain
+                        </h2>
+                </div>
+	{% endif %}
 </div>

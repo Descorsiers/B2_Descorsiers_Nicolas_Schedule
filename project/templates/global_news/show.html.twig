@@ -19,13 +19,8 @@
                 <th>Description</th>
                 <td>{{ global_news.description }}</td>
             </tr>
-            <tr>
-                <th>ImageName</th>
-                <td>{{ global_news.imageName }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ global_news.updatedAt ? global_news.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Image</th>
+                <img src="{{ asset('images/news/leavemealone-67d58474bd2e7879780624.jpg') }}" alt="">
             </tr>
         </tbody>
     </table>

@@ -1,15 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FinalViewController!
+{% block title %}Planning de LaManu !
 {% endblock %}
 
 {% block body %}
-
 	<section id="finalView">
-		<div class="todaySchedule">
-			{% include "final_view/b1/index.html.twig"  %}
-			{% include "final_view/b2/index.html.twig"  %}
-			{% include "final_view/b3/index.html.twig"  %}
+		{% if B1 and B2 and B3  %}
+			<div class="todaySchedule">
+				{% include "final_view/b1/index.html.twig"  %}
+				{% include "final_view/b2/index.html.twig"  %}
+				{% include "final_view/b3/index.html.twig"  %}
+			</div>
+		{% else %}
+			<div class="notSchedule">
+				<h1>
+					La chance, pas de cours !
+				</h1>
+			</div>	
+		{% endif %}
+		<div class="news">
+			{% include "final_view/news/city/index.html.twig" %}
+			{% include "final_view/news/fun/index.html.twig" %}
 		</div>
 	</section>
 {% endblock %}

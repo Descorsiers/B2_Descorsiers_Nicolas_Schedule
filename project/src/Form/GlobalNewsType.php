@@ -6,6 +6,7 @@ use App\Entity\GlobalNews;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class GlobalNewsType extends AbstractType
 {
@@ -14,9 +15,8 @@ class GlobalNewsType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('imageName')
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
             ])
         ;
     }

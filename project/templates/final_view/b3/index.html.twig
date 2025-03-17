@@ -61,66 +61,74 @@
 			</div>
 		</div>
 	</div>
-	<div class="b3Tomorrow">
-		<div class="firstContainer">
-			<figure class="firstContainer__image">
-				<img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
-			</figure>
-			<h1>
-				{{ tomorrowB3[0].grade.name }}
-				En Alternance
-			</h1>
-		</div>
-		<div class="secondContainer">
-			<h2>
-				Planning du
-				{{ week.first }}
-				au
-				{{ week.last }}
-			</h2>
-		</div>
-		<div class="thirdContainer">
-			<div class="content">
-				<p></p>
-				<div class="content__container">
-					<div class="defSchedule">
-						<h3>
-							{{ tomorrowB3[0].name.name|slice(0,3) }}
-						</h3>
-						<div class="today">
-							<p class="todayDate">
-								{{ tomorrowB3[0].date|date('d-M') }}
-							</p>
-							<p class="staticInformations">
-								Enseignant
-								<br>Matière
-							</p>
+	{% if tomorrowB3 %}
+		<div class="b3Tomorrow">
+			<div class="firstContainer">
+				<figure class="firstContainer__image">
+					<img src="{{ asset('images/La_Manu_logo_blanc_slogan.svg') }}"/>
+				</figure>
+				<h1>
+					{{ tomorrowB3[0].grade.name }}
+					En Alternance
+				</h1>
+			</div>
+			<div class="secondContainer">
+				<h2>
+					Planning du
+					{{ week.first }}
+					au
+					{{ week.last }}
+				</h2>
+			</div>
+			<div class="thirdContainer">
+				<div class="content">
+					<p></p>
+					<div class="content__container">
+						<div class="defSchedule">
+							<h3>
+								{{ tomorrowB3[0].name.name|slice(0,3) }}
+							</h3>
+							<div class="today">
+								<p class="todayDate">
+									{{ tomorrowB3[0].date|date('d-M') }}
+								</p>
+								<p class="staticInformations">
+									Enseignant
+									<br>Matière
+								</p>
+							</div>
+						</div>
+						<div class="subjectTeacher">
+							{% if tomorrowB3|length  == 1 %}
+								{# Class all the day #}
+								{% if tomorrowB3[0].schedule.name == 'Journée' %}
+									{% include "final_view/b3/tomorrow/classAllDay.html.twig" with {'tomorrowB3': tomorrowB3 } %}
+									{# Class just the morning #}
+								{% elseif tomorrowB3[0].schedule.name == 'Matin' %}
+									{% include "final_view/b3/tomorrow/classJustMorning.html.twig" with {'tomorrowB3': tomorrowB3 } %}
+									{# Class just afternoon #}
+								{% elseif tomorrowB3[0].schedule.name == 'Après_midi' %}
+									{% include "final_view/b3/tomorrow/classJustAfternoon.html.twig" with {'tomorrowB3': tomorrowB3 } %}
+								{% endif %}
+							{% elseif tomorrowB3|length  == 2 %}
+								{% include "final_view/b3/tomorrow/morningAfternoon.html.twig" with {'tomorrowB3': tomorrowB3 } %}
+							{% endif %}
 						</div>
 					</div>
-					<div class="subjectTeacher">
-						{% if tomorrowB3|length  == 1 %}
-							{# Class all the day #}
-							{% if tomorrowB3[0].schedule.name == 'Journée' %}
-								{% include "final_view/b3/tomorrow/classAllDay.html.twig" with {'tomorrowB3': tomorrowB3 } %}
-								{# Class just the morning #}
-							{% elseif tomorrowB3[0].schedule.name == 'Matin' %}
-								{% include "final_view/b3/tomorrow/classJustMorning.html.twig" with {'tomorrowB3': tomorrowB3 } %}
-								{# Class just afternoon #}
-							{% elseif tomorrowB3[0].schedule.name == 'Après_midi' %}
-								{% include "final_view/b3/tomorrow/classJustAfternoon.html.twig" with {'tomorrowB3': tomorrowB3 } %}
-							{% endif %}
-						{% elseif tomorrowB3|length  == 2 %}
-							{% include "final_view/b3/tomorrow/morningAfternoon.html.twig" with {'tomorrowB3': tomorrowB3 } %}
-						{% endif %}
-					</div>
+				</div>
+				<div class="emptyContent">
+					<p>
+						Notes
+					</p>
+					<div></div>
 				</div>
 			</div>
-			<div class="emptyContent">
-				<p>
-					Notes
-				</p>
-				<div></div>
-			</div>
 		</div>
-	</div>
+	{% else %}
+		<div class="notSchedule">
+			<h2>
+				Pas de cours demain
+			</h2>
+		</div>	
+	{% endif %}
 </div>

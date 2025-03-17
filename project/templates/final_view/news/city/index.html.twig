@@ -1,0 +1,23 @@
+<div class="newsCity">
+	<h2>
+        {{ rss.title }}
+    </h2>
+    <div class="newsCityContent">
+        <div class="newsCityContent__up">
+            <h3>
+                {{ rss.item.title }}
+            </h3>
+            <p>
+                {{ rss.item.description }}
+            </p>
+        </div>
+        <div class="newsCityContent__down">
+            <figure class="newsCityContent__picture">
+                <img src={{ rss.item.enclosure.attributes().url}} alt="Image qui illustre la news">
+            </figure>
+            <p class="newsCityContent__date">
+                {{ rss.item.pubDate|date("d/m/y") }}
+            </p>
+        </div>
+    </div>
+</div>

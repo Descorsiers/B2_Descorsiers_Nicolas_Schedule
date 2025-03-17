@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\DaySchedule;
+use App\Entity\GlobalNews;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,9 +17,9 @@ final class FinalViewController extends AbstractController
     public function index(EntityManagerInterface $em): Response   
     {
         $repository = $em->getRepository(DaySchedule::class);
+        $globalNews  = $em->getRepository(GlobalNews::class)->findOneBy([],['id' => 'DESC']);
         $date = new DateTimeImmutable();
         $dateTomorrow = $date->modify('+1day');
-        $tomorrow = $repository->findBy(['date' => $dateTomorrow]);
         $dayB1 = $repository->findBy(['date' => $date, 'grade' => 'B1']);
         $dayB2 = array('dev' => $repository->findBy(['date' => $date, 'grade' => 'B2Dev']),'design' => $repository->findBy(['date' => $date, 'grade' => 'B2Design']));
         $dayB3 = $repository->findBy(['date' => $date, 'grade' => 'B3']);
@@ -27,7 +28,6 @@ final class FinalViewController extends AbstractController
         $tomorrowB3 = $repository->findBy(['date' => $dateTomorrow, 'grade' => 'B3']);
         $week =null;
         $data = simplexml_load_file("https://www.amiens.fr/flux-rss/actus");
-        dd($data->channel);
         if ($dayB1[0]) {
             $todayName = $dayB1[0]->getName()->name;
             $week = [
@@ -56,7 +56,7 @@ final class FinalViewController extends AbstractController
             }
         }
         else{
-            $week = "Pas de cours le week-end !";
+            $week = "Pas de cours !";
         }
         return $this->render('final_view/index.html.twig', [
             'B1' => $dayB1,
@@ -66,7 +66,8 @@ final class FinalViewController extends AbstractController
             'tomorrowB2' => $tomorrowB2,
             'tomorrowB3' => $tomorrowB3,
             'week' => $week,
-            'rssItems' => $data->channel->item,
+            'rss' => $data->channel,
+            'globalNews' => $globalNews,
         ]);
     }
 }

@@ -1,0 +1,16 @@
+<div class="newsFun">
+	<h2>
+        {{ globalNews.title }}
+    </h2>
+    <div class="newsFunContent">
+        <figure class="newsFunContent__picture">
+            <img src="{{ asset('images/news/' ~globalNews.imageName) }}" alt="Image qui illustre la news">
+        </figure>
+        <p class="newsFunContent__description">
+            {{ globalNews.description }}
+        </p>
+    </div>
+    <h3>
+        C'était la news du jour !
+    </h3>
+</div>
