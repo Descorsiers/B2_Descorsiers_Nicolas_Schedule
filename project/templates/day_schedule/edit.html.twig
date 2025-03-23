@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit DaySchedule{% endblock %}
+{% block title %}Modifier le planning de la journée{% endblock %}
 
 {% block body %}
-    <h1>Edit DaySchedule</h1>
-
-    {{ include('day_schedule/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_day_schedule_index') }}">back to list</a>
-
-    {{ include('day_schedule/_delete_form.html.twig') }}
+    <section id="scheduleEdit">
+        <h1>
+            Modifier le planning de la journée
+        </h1>
+        {{ include('day_schedule/_form.html.twig', {'button_label': 'Modifier'}) }}
+        <div class="scheduleEdit">
+            <a href="{{ path('app_day_schedule_index') }}">
+                Retourner à la liste
+            </a>
+            {{ include('day_schedule/_delete_form.html.twig') }}
+        </div>
+    </section>
 {% endblock %}

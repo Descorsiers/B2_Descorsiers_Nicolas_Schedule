@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Se connecter{% endblock %}
 
 {% block body %}
-<form method="post">
+{# <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -33,5 +33,38 @@
     <button class="btn btn-lg btn-primary" type="submit">
         Sign in
     </button>
-</form>
+</form> #}
+<section class="login">
+    <form action="post" class="loginForm">
+        <h1>
+            Se connecter
+        </h1>
+        <div class="scheduleFormContent">
+            <label for="inputEmail" class="scheduleFormLabel">
+                Email
+            </label>
+            <input type="email" name="email" id="inputEmail" autocomplete="email" value="{{ last_username }}" class="scheduleFormInput">
+        </div>
+        <div class="scheduleFormContent">
+            <label for="inputPassword" class="scheduleFormLabel">
+                Mot de passe 
+            </label>
+            <input type="password" name="password" id="inputPassword" required autocomplete="current-password" class="scheduleFormInput">
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div class="scheduleFormContent">
+            <label class="scheduleFormLabel" for="rememberMe">
+                <input type="checkbox" name="_remember_me" id="rememberMe"> Se souvenir de moi
+            </label>
+        </div>
+        <div class="scheduleFormButton">
+            <button>
+                Se connecter
+            </button>
+            <a href="{{ path("app_register") }}">
+                S'inscrire
+            </a>
+        </div>
+    </form>
+</section>
 {% endblock %}

@@ -42,14 +42,6 @@ final class GlobalNewsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_global_news_show', methods: ['GET'])]
-    public function show(GlobalNews $globalNews): Response
-    {
-        return $this->render('global_news/show.html.twig', [
-            'global_news' => $globalNews,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_global_news_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, GlobalNews $globalNews, EntityManagerInterface $entityManager): Response
     {

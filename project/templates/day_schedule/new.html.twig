@@ -3,9 +3,16 @@
 {% block title %}New DaySchedule{% endblock %}
 
 {% block body %}
-    <h1>Create new DaySchedule</h1>
+    <section id="sceduleCreate">
+        <h1>
+            Ajouter une journée
+        </h1>
+        {{ include('day_schedule/_form.html.twig', {'button_label': 'Créer'}) }}
+        <div class="scheduleNews">
+            <a href="{{ path('app_day_schedule_index') }}">
+                Retour à la liste
+            </a>
+        </div>
+    </section>
 
-    {{ include('day_schedule/_form.html.twig') }}
-
-    <a href="{{ path('app_day_schedule_index') }}">back to list</a>
 {% endblock %}

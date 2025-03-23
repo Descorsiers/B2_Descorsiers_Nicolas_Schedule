@@ -3,38 +3,32 @@
 {% block title %}GlobalNews index{% endblock %}
 
 {% block body %}
-    <h1>GlobalNews index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for global_news in global_news %}
-            <tr>
-                <td>{{ global_news.id }}</td>
-                <td>{{ global_news.title }}</td>
-                <td>{{ global_news.description }}</td>
-                <td>
-                    <img src="{{ asset('images/news/leavemealone-67d58474bd2e7879780624.jpg') }}" alt="">
-                </td>
-                <td>
-                    <a href="{{ path('app_global_news_show', {'id': global_news.id}) }}">show</a>
-                    <a href="{{ path('app_global_news_edit', {'id': global_news.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+<section class="newsList">
+    <h1>
+        Liste des news
+    </h1>
+    <div class="newsListContent">
+        {% for news in global_news %}
+            <div class="newsListContainer">
+                <ul class="newsListContainerList">
+                    <li class="newsListContainerList__item">
+                        {{ news.title }}
+                    </li>
+                    <li class="newsListContainerList__item">
+                        {{ news.description }}
+                    </li>
+                    <li class="newsListContainerList__item">
+                        <figure class="newsListPicture">
+                            <img src="{{ asset('images/news/leavemealone-67d58474bd2e7879780624.jpg') }}" alt="Image de la news">
+                        </figure>
+                    </li>
+                </ul>
+                <a href="{{ path('app_global_news_edit', {'id': news.id}) }}">
+					<i class="fa-solid fa-pen"></i>
+				</a>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-
+    </div>
+</section>
     <a href="{{ path('app_global_news_new') }}">Create new</a>
 {% endblock %}

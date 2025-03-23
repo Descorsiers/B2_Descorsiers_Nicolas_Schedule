@@ -1,4 +1,32 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, { 'attr': { 'class': "scheduleForm" } }) }}
+    <div class="scheduleFormContent">
+        {{ form_label(form.name, 'Jour', { 'label_attr': { 'class': "scheduleFormLabel" } }) }}
+        {{ form_widget(form.name, { 'attr': { 'class': "scheduleFormInput" } }) }}
+    </div>
+    <div class="scheduleFormContent">
+        {{ form_label(form.schedule, 'Horaires', { 'label_attr': { 'class': "scheduleFormLabel" } }) }}
+        {{ form_widget(form.schedule, { 'attr': { 'class': "scheduleFormInput" } }) }}
+    </div>
+    <div class="scheduleFormContent">
+        {{ form_label(form.grade, 'Année', { 'label_attr': { 'class': "scheduleFormLabel" } }) }}
+        {{ form_widget(form.grade, { 'attr': { 'class': "scheduleFormInput" } }) }}
+    </div>
+    <div class="scheduleFormContent">
+        {{ form_label(form.subject, 'Matière', { 'label_attr': { 'class': "scheduleFormLabel" } }) }}
+        {{ form_widget(form.subject, { 'attr': { 'class': "scheduleFormInput" } }) }}
+    </div>
+    <div class="scheduleFormContent">
+        {{ form_label(form.teacher, 'Enseignant', { 'label_attr': { 'class': "scheduleFormLabel" } }) }}
+        {{ form_widget(form.teacher, { 'attr': { 'class': "scheduleFormInput" } }) }}
+    </div>
+    <div class="scheduleFormContent">
+        {{ form_label(form.date, 'Date', { 'label_attr': { 'class': "scheduleFormLabel" } }) }}
+        {{ form_widget(form.date, { 'attr': { 'class': "scheduleFormInput" } }) }}
+    </div>
+    <div class="scheduleFormButton">
+        <button>
+            {{ button_label|default('Modifier') }}
+        </button>
+    </div>
 {{ form_end(form) }}
+

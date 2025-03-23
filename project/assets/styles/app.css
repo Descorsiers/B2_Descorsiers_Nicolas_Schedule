@@ -7,6 +7,7 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+    color: inherit;
 }
 #finalView{
     display: flex;
@@ -18,6 +19,7 @@
         width: 100%;
         gap: 20px;
         transition: all 500ms ease-in-out 0s;
+        flex: 1;
     }
     .b2Content{
         gap: calc(100% + 40px);
@@ -43,6 +45,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex: 1 0 100%;
         h1, h2{
             font-family: "Montserrat";
             font-weight: 700;
@@ -259,6 +262,8 @@
                     p{
                         font-family: "Poppins";
                         font-size: 17px;
+                        overflow: hidden;
+                        max-height: 75px;
                     }
                 }
                 .newsCityContent__down{
@@ -325,6 +330,150 @@
                 text-align: center;
                 font-weight: 700;
             }
+        }
+    }
+}
+#scheduleList{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px 0 10px; 
+    h1{
+        font-family: "Montserrat";
+        font-weight: 700;
+        font-size: 35px;
+        text-align: center;
+    }
+    .scheduleListContainer{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .defineList{
+            display: flex;
+            justify-content: space-around;
+            gap: 50px;
+            background-color: black;
+            border-radius: 20px;
+            padding: 20px;
+            .defineList__item{
+                font-family: "Poppins";
+                font-size: 25px;
+                font-weight: 600;
+                color: white;
+            }
+        }
+        .scheduleListContent{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .contentContainer{
+                display: flex;
+                justify-content: space-between;
+                gap: 20px;
+                padding: 20px;
+                border-radius: 20px;
+                background-color: rgb(221, 221, 221);
+                align-items: center;
+                .contentContainerList{
+                    display: flex;
+                    justify-content: start;
+                    gap: 50px;
+                    flex: 2;
+                    .contentContainerList__item{
+                        font-family: "Poppins";
+                        font-size: 25px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+    .scheduleListRedirection{
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        padding-bottom: 20px;
+        a{
+            padding: 20px;
+            border-radius: 30px;
+            font-family: "Montserrat";
+            font-weight: 700;
+            color: white;
+            background-color: black;
+            font-size: 18px;
+        }
+    }
+}   
+#scheduleEdit, #sceduleCreate, .registration, .login{
+    padding: 20px 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    h1{
+        font-family: "Montserrat";
+        font-weight: 700;
+        font-size: 35px;
+        text-align: center;
+    }
+    .scheduleForm, .registrationForm, .loginForm{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 30px;
+        border-radius: 20px;
+        background-color: black;
+        h1{
+            color: white;
+        }
+        .scheduleFormContent{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .scheduleFormLabel{
+                color: white;
+                font-family: "Montserrat";
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .scheduleFormInput{
+                padding: 15px;
+                border-radius: 10px;
+                font-family: "Poppins";
+                font-size: 18px;
+                font-weight: 500;
+                background-color: rgb(230, 230, 230);
+            }
+        }
+        .scheduleFormButton{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            button, a{
+                background-color: white;
+                width: fit-content;
+                padding: 20px 40px;
+                border-radius: 25px;
+                font-family: "Montserrat";
+                font-size: 18px;
+                font-weight: 500;
+                border: none;
+            }
+        }
+    }
+    .scheduleEdit, .scheduleNews{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding-bottom: 20px;
+        a, button{
+            padding: 20px 40px;
+            font-family: "Montserrat";
+            font-size: 18px;
+            font-weight: 700;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 200px;
         }
     }
 }

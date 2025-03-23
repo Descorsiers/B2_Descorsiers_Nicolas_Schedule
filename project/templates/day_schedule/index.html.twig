@@ -1,44 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DaySchedule index{% endblock %}
+{% block title %}Liste des jours
+{% endblock %}
 
 {% block body %}
-    <h1>DaySchedule index</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Schedule</th>
-                <th>Grade</th>
-                <th>Subject</th>
-                <th>Teacher</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for day_schedule in day_schedules %}
-            <tr>
-                <td>{{ day_schedule.id }}</td>
-                <td>{{ day_schedule.name.name }}</td>
-                <td>{{ day_schedule.schedule.name }}</td>
-                <td>{{ day_schedule.grade.name }}</td>
-                <td>{{ day_schedule.subject }}</td>
-                <td>{{ day_schedule.teacher }}</td>
-                <td>{{ day_schedule.date ? day_schedule.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_day_schedule_show', {'id': day_schedule.id}) }}">show</a>
-                    <a href="{{ path('app_day_schedule_edit', {'id': day_schedule.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_day_schedule_new') }}">Create new</a>
+	<section id="scheduleList">
+		<h1>
+			Listes des jours
+		</h1>
+		<div class="scheduleListContainer">
+			<ul class="defineList">
+				<li class="defineList__item">
+					Jour
+				</li>
+				<li class="defineList__item">
+					Période
+				</li>
+				<li class="defineList__item">
+					Année
+				</li>
+				<li class="defineList__item">
+					Sujet
+				</li>
+				<li class="defineList__item">
+					Professeur
+				</li>
+				<li class="defineList__item">
+					Date
+				</li>
+			</ul>
+			<div class="scheduleListContent">
+				{% for day_schedule in day_schedules %}
+					<div class="contentContainer">
+						<ul class="contentContainerList">
+							<li class="contentContainerList__item">
+								{{ day_schedule.name.name }}
+							</li>
+							<li class="contentContainerList__item">
+								{{ day_schedule.schedule.name }}
+							</li>
+							<li class="contentContainerList__item">
+								{{ day_schedule.grade.name }}
+							</li>
+							<li class="contentContainerList__item">
+								{{ day_schedule.subject }}
+							</li>
+							<li class="contentContainerList__item">
+								{{ day_schedule.teacher }}
+							</li>
+							<li class="contentContainerList__item">
+								{{ day_schedule.date|date('d-m-y') }}
+							</li>
+						</ul>
+						<a href="{{ path('app_day_schedule_edit', {'id': day_schedule.id}) }}">
+							<i class="fa-solid fa-pen"></i>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+        <div class="scheduleListRedirection">
+			<a href="{{ path('app_day_schedule_new') }}">
+				Ajouter un jour
+			</a>
+			<a href="{{ path('app_global_news_index') }}">
+				Liste des news
+			</a>
+		</div>
+	</section>
 {% endblock %}

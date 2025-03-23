@@ -28,8 +28,24 @@ final class FinalViewController extends AbstractController
         $tomorrowB3 = $repository->findBy(['date' => $dateTomorrow, 'grade' => 'B3']);
         $week =null;
         $data = simplexml_load_file("https://www.amiens.fr/flux-rss/actus");
-        if ($dayB1[0]) {
-            $todayName = $dayB1[0]->getName()->name;
+        if (!$dayB1 && !$dayB2['design'] && !$dayB2['dev'] && !$dayB3) {
+            return $this->redirectToRoute('app_day_schedule_new');
+        }
+        if ($dayB1 || $dayB2['design'] || $dayB2['dev'] || $dayB3) {
+            if ($dayB1) {
+                $todayName = $dayB1[0]->getName()->name;
+            }
+            elseif ($dayB2['design'] || $dayB2['dev']) {
+                if ($dayB2['design']) {
+                    $todayName = $dayB2['design'][0]->getName()->name;
+                }
+                else{
+                    $todayName = $dayB2['dev'][0]->getName()->name;
+                }
+            }
+            elseif ($dayB3) {
+                $todayName = $dayB3[0]->getName()->name;
+            }
             $week = [
                 'first' => null,
                 'last' => null,

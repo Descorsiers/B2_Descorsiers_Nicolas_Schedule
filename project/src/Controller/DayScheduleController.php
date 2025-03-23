@@ -27,7 +27,7 @@ final class DayScheduleController extends AbstractController
     {
         $daySchedule = new DaySchedule();
         $form = $this->createForm(DayScheduleType::class, $daySchedule);
-        $form->handleRequest($request);
+        $form->handleRequest($request); 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($daySchedule);
@@ -39,14 +39,6 @@ final class DayScheduleController extends AbstractController
         return $this->render('day_schedule/new.html.twig', [
             'day_schedule' => $daySchedule,
             'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_day_schedule_show', methods: ['GET'])]
-    public function show(DaySchedule $daySchedule): Response
-    {
-        return $this->render('day_schedule/show.html.twig', [
-            'day_schedule' => $daySchedule,
         ]);
     }
 
